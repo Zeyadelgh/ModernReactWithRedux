@@ -15,7 +15,7 @@ export default function App() {
   const renderedAnimals = animals.map((animal, index) => {
     return <AnimalShow type={animal} key={index} />;
   });
-
+  console.log('hello');
   return (
     <div>
       <button onClick={handleClick}>Add Animal</button>
