@@ -1,8 +1,11 @@
-import React from 'react';
-import logo from './logo.svg';
+import searchImages from './api';
+import SearchBar from './components/SearchBar';
 
 function App() {
-  return <div>App</div>;
+  const handleSubmit = (term: string) => {
+    console.log('Do search with', term);
+  };
+  return <SearchBar onSubmit={handleSubmit} />;
 }
 
 export default App;
