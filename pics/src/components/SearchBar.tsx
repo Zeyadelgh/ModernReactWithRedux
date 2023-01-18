@@ -1,3 +1,4 @@
+import './SearchBar.css';
 import { useState } from 'react';
 interface AppProps {
   onSubmit: (params: any) => any;
@@ -14,8 +15,9 @@ export default function SearchBar({ onSubmit }: AppProps) {
     setTerm(event.target.value);
   };
   return (
-    <div>
+    <div className='search-bar'>
       <form onSubmit={handleFormSubmit}>
+        <label>Enter Search Term</label>
         <input value={term} onChange={handleChange} />
       </form>
     </div>
