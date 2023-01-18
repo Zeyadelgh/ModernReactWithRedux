@@ -1,3 +1,6 @@
-export default function ImageShow() {
-  return <div>ImageShow</div>;
+interface AppProps {
+  image: any;
+}
+export default function ImageShow({ image }: AppProps) {
+  return <div>{image.alt_description}</div>;
 }

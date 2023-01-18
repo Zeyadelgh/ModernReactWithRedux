@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import ImageShow from './ImageShow';
 
 interface AppProps {
-  images: (params: any) => any;
+  images: string[];
 }
 export default function ImageList({ images }: AppProps) {
-  const [imageList, setImageList] = useState([]);
-  return <div>ImageList</div>;
+  const renderedImages = images.map((image) => {
+    return <ImageShow image={image} />;
+  });
+  return <div>{renderedImages}</div>;
 }
