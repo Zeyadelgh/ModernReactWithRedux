@@ -1,17 +1,21 @@
 import { useState } from 'react';
 import BookCreate from './components/BookCreate';
+
+interface IBooks {
+  id: number;
+  title: string;
+}
 export default function App() {
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState<IBooks[]>([]);
 
   const createBook = (title: string) => {
-    console.log('Need to add book with: ', title);
+    const updatedBooks = [...books, { id: 123, title }];
+    setBooks(updatedBooks);
   };
   return (
     <div>
-      <form>
-        <label>Add a Book</label>
-        <BookCreate onCreate={createBook} />
-      </form>
+      {books.length}
+      <BookCreate onCreate={createBook} />
     </div>
   );
 }
