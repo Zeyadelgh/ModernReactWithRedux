@@ -12,12 +12,23 @@ export interface AppFunctions {
 export default function App() {
   const [books, setBooks] = useState<IBooks[]>([]);
 
+  const editBookById = (id: Number, newTitle: string) => {
+    const updatedBooks = books.map((book) => {
+      if (book.id === id) {
+        return { ...book, title: newTitle };
+      }
+      return book;
+    });
+    setBooks(updatedBooks);
+  };
+
   const deleteBookById = (id: Number) => {
     const updatedBooks = books.filter((book) => {
       return book.id !== id;
     });
     setBooks(updatedBooks);
   };
+
   const createBook = (title: string) => {
     const updatedBooks = [
       ...books,
@@ -27,7 +38,7 @@ export default function App() {
   };
   return (
     <div className='app'>
-      <BookList books={books} onDelete={deleteBookById} />
+      <BookList books={books} onDelete={deleteBookById} onEdit={editBookById} />
       <BookCreate onCreate={createBook} />
     </div>
   );
