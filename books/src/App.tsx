@@ -2,9 +2,12 @@ import { useState } from 'react';
 import BookCreate from './components/BookCreate';
 import BookList from './components/BookList';
 
-interface IBooks {
+export interface IBooks {
   id: number;
   title: string;
+}
+export interface AppFunctions {
+  onDelete: (id: Number) => void;
 }
 export default function App() {
   const [books, setBooks] = useState<IBooks[]>([]);
@@ -24,7 +27,7 @@ export default function App() {
   };
   return (
     <div className='app'>
-      <BookList books={books} />
+      <BookList books={books} onDelete={deleteBookById} />
       <BookCreate onCreate={createBook} />
     </div>
   );

@@ -1,8 +1,14 @@
 import BookShow from './BookShow';
+import { IBooks } from '../App';
+import { AppFunctions } from '../App';
 
-export default function BookList({ books }: any) {
-  const renderedBooks = books.map((book: any) => {
-    return <BookShow key={book.id} book={book} />;
+export interface IBookList {
+  books: IBooks[];
+  onDelete: (id: Number) => void;
+}
+export default function BookList({ books, onDelete }: IBookList) {
+  const renderedBooks = books.map((book: IBooks) => {
+    return <BookShow key={book.id} book={book} onDelete={onDelete} />;
   });
   return <div className='book-list'>{renderedBooks}</div>;
 }
