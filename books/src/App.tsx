@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import BookCreate from './components/BookCreate';
 import BookList from './components/BookList';
+import axios from 'axios';
 
 export interface IBooks {
   id: number;
@@ -11,6 +12,16 @@ export interface AppFunctions {
 }
 export default function App() {
   const [books, setBooks] = useState<IBooks[]>([]);
+
+  const fetchBooks = async () => {
+    const response = await axios.get('http://localhost:3001/books');
+
+    setBooks(response.data);
+  };
+
+  useEffect(() => {
+    fetchBooks();
+  }, []);
 
   const editBookById = (id: Number, newTitle: string) => {
     const updatedBooks = books.map((book) => {
@@ -29,11 +40,12 @@ export default function App() {
     setBooks(updatedBooks);
   };
 
-  const createBook = (title: string) => {
-    const updatedBooks = [
-      ...books,
-      { id: Math.round(Math.random() * 9999), title },
-    ];
+  const createBook = async (title: string) => {
+    const response = await axios.post('http://localhost:3001/books', {
+      title,
+    });
+
+    const updatedBooks = [...books, response.data];
     setBooks(updatedBooks);
   };
   return (
