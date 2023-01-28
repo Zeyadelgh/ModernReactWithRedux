@@ -1,20 +1,3 @@
 {
-  "books": [
-    {
-      "title": "Harry Potter",
-      "id": 1
-    },
-    {
-      "title": "Harry Potter",
-      "id": 2
-    },
-    {
-      "title": "asdf",
-      "id": 3
-    },
-    {
-      "title": "Harry Poopa",
-      "id": 4
-    }
-  ]
+  "books": []
 }
